@@ -8,4 +8,12 @@
     <string name="motor_high_temp_alarm">Motor high temperature alarm</string>
     <string name="printer_current_task_print_complete">The print task has been printed</string>
     <string name="title_activity_settings">Settings</string>
+
+    <string name="header1"> (Name) Local Government Area</string>
+    <string name="header2"> Adamawa State</string>
+
+    <string name="animalsCategory">Animals</string>
+    <string name="produceCategory">Produce</string>
+    <string name="gatePassCategory">Gate Pass</string>
+    <string name="loadingCategory">Loading/Offloading</string>
 </resources>

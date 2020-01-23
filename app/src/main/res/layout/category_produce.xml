@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/produceCategory">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/produceCategory"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            />
+
+        <!-- Maize view -->
+        <LinearLayout
+            android:id="@+id/llProduceMaize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etMaizeNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bags of Maize"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintMaize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Maize"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+        <!-- Beans view -->
+        <LinearLayout
+            android:id="@+id/llProduceBeans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etBeansNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bags of Beans"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintBeans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Beans"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+        <!-- Rice view -->
+        <LinearLayout
+            android:id="@+id/llProduceRice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etRiceNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bags of Rice"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintRice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Rice"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+        <!-- Millet view -->
+        <LinearLayout
+            android:id="@+id/llProduceMillet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etMilletNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bags of Millet"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintMillet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Millet"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+        <!-- Groundnut view -->
+        <LinearLayout
+            android:id="@+id/llProduceGroundnut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etGroundnutNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bags of Groundnuts"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintGroundnut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Groundnut"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>

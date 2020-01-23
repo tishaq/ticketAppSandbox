@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/loadingCategory">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loadingCategory"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        />
+    <!-- Car view -->
+    <LinearLayout
+        android:id="@+id/llLoadingCar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingCar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Print for Car"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Keke Napep view -->
+    <LinearLayout
+        android:id="@+id/llLoadingKeke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingKeke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Keke Napep"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Bus view -->
+    <LinearLayout
+        android:id="@+id/llLoadingBus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Bus"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Hilux view -->
+    <LinearLayout
+        android:id="@+id/llLoadingHilux"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingHilux"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Hilux"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Sienna view -->
+    <LinearLayout
+        android:id="@+id/llLoadingSienna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingSienna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Sienna"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Jeep view -->
+    <LinearLayout
+        android:id="@+id/llLoadingJeep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingJeep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Jeep"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llLoadingTrailer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingTrailer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Trailer"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Canter view -->
+    <LinearLayout
+        android:id="@+id/llLoadingCanter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingCanter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Canter"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Tangul view -->
+    <LinearLayout
+        android:id="@+id/llLoadingTangul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingTangul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Tangul"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- J5 view -->
+    <LinearLayout
+        android:id="@+id/llLoadingJ5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingJ5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for J5"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Wheelbarrow view -->
+    <LinearLayout
+        android:id="@+id/llLoadingWheelbarrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintLoadingWheelbarrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Wheelbarrow"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

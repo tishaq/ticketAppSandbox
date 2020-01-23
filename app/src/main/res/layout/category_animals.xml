@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/animalsCategory">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/animalsCategory"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            />
+
+        <!-- Camel view -->
+        <LinearLayout
+            android:id="@+id/llAnimalCamel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorLight"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            >
+
+            <EditText
+                android:id="@+id/etCamelNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of Camels"
+                android:textAlignment="center"
+                android:inputType="number"
+                />
+            <Button
+                android:id="@+id/btPrintCamel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print for Camel"
+                android:textColor="@color/colorText"
+                android:background="@color/colorButton"
+                android:textSize="16sp"
+                />
+    </LinearLayout>
+    <!-- Cow view -->
+    <LinearLayout
+        android:id="@+id/llAnimalCow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+            android:layout_margin="10dp"
+        >
+
+        <EditText
+            android:id="@+id/etCowNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of Cows"
+            android:textAlignment="center"
+            android:inputType="number"
+            />
+        <Button
+            android:id="@+id/btPrintCow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Cow"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+    <!-- Sheep view -->
+    <LinearLayout
+        android:id="@+id/llAnimalSheep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+            android:layout_margin="10dp"
+        >
+
+        <EditText
+            android:id="@+id/etSheepNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of Sheeps"
+            android:textAlignment="center"
+            android:inputType="number"
+            />
+        <Button
+            android:id="@+id/btPrintSheep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Sheep"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+    <!-- Goat view -->
+    <LinearLayout
+        android:id="@+id/llAnimalGoat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+            android:layout_margin="10dp"
+        >
+
+        <EditText
+            android:id="@+id/etGoatNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of Goats"
+            android:textAlignment="center"
+            android:inputType="number"
+            />
+        <Button
+            android:id="@+id/btPrintGoat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Print for Goat"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+</LinearLayout>
