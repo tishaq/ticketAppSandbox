@@ -1,0 +1,31 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateTestTicketTable($input: CreateTestTicketTableInput!) {
+  createTestTicketTable(input: $input) {
+    id
+    deviceName
+    receiptType
+    itemType
+    fee
+    date
+  }
+}
+mutation UpdateTestTicketTable($input: UpdateTestTicketTableInput!) {
+  updateTestTicketTable(input: $input) {
+    id
+    deviceName
+    receiptType
+    itemType
+    fee
+    date
+  }
+}
+mutation DeleteTestTicketTable($input: DeleteTestTicketTableInput!) {
+  deleteTestTicketTable(input: $input) {
+    id
+    deviceName
+    receiptType
+    itemType
+    fee
+    date
+  }
+}

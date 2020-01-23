@@ -25,22 +25,38 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajisaq.ticketingappsanbox.Utils.ButtonDelayUtils;
 import com.ajisaq.ticketingappsanbox.Utils.HandlerUtils;
+
+import com.amazonaws.amplify.generated.graphql.CreateTestTicketTableMutation;
+import com.amazonaws.amplify.generated.graphql.ListTestTicketTablesQuery;
+import com.amazonaws.mobile.config.AWSConfiguration;
+import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
+import com.apollographql.apollo.GraphQLCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
 import com.iposprinter.iposprinterservice.IPosPrinterCallback;
 import com.iposprinter.iposprinterservice.IPosPrinterService;
 
 import java.net.NetworkInterface;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nonnull;
+
+import type.CreateTestTicketTableInput;
 
 import static com.ajisaq.ticketingappsanbox.MemInfo.bitmapRecycle;
+
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -228,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             llLoadingSienna, llLoadingJ5, llLoadingWheelbarrow;
     LinearLayout animalsCategory, produceCategory, gatePassCategory, loadingCategory;
 
+   private AWSAppSyncClient mAWSAppSyncClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -270,6 +287,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         printerStatusFilter.addAction(PRINTER_BUSY_ACTION);
 
         registerReceiver(IPosPrinterStatusListener, printerStatusFilter);
+        //AWS
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
+                .build();
 
         viewInit();
 
@@ -425,141 +447,141 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (!preferences.getString("maize", "").isEmpty()) {
                     llProduceMaize.setVisibility(View.VISIBLE);
-                    //summary += "Maize: "+ preferences.getString("maize", null) +"\n";
+
                 }
                 if (!preferences.getString("beans", "").isEmpty()) {
                     llProduceBeans.setVisibility(View.VISIBLE);
-                    //summary += "Beans: "+ preferences.getString("beans", null) +"\n";
+
                 }
                 if (!preferences.getString("rice", "").isEmpty()) {
                     llProduceRice.setVisibility(View.VISIBLE);
-                    //summary += "Rice: "+ preferences.getString("rice", null) +"\n";
+
                 }
                 if (!preferences.getString("millet", "").isEmpty()) {
                     llProduceMillet.setVisibility(View.VISIBLE);
-                    //summary += "Millet: "+ preferences.getString("millet", null) +"\n";
+
                 }
                 if (!preferences.getString("groundnut", "").isEmpty()) {
                     llProduceGroundnut.setVisibility(View.VISIBLE);
-                    //summary += "Millet: "+ preferences.getString("millet", null) +"\n";
+
                 }
             }
             if (preferences.getBoolean("isAnimals", false)) {
                 animalsCategory.setVisibility(View.VISIBLE);
-                //summary += "\n Fees for Animals per Head\n\n";
+
                 if (!preferences.getString("camel", "").isEmpty()) {
                     llAnimalCamel.setVisibility(View.VISIBLE);
-                    //summary += "Camel: "+ preferences.getString("camel", null) +"\n";
+
                 }
                 if (!preferences.getString("cow", "").isEmpty()) {
                     llAnimalCow.setVisibility(View.VISIBLE);
-                    //summary += "Cow: "+ preferences.getString("cow", null) +"\n";
+
                 }
                 if (!preferences.getString("goat", "").isEmpty()) {
                     llAnimalGoat.setVisibility(View.VISIBLE);
-                    //summary += "Goat: "+ preferences.getString("goat", null) +"\n";
+
                 }
                 if (!preferences.getString("sheep", "").isEmpty()) {
                     llAnimalSheep.setVisibility(View.VISIBLE);
-                    //summary += "Sheep: "+ preferences.getString("sheep", null) +"\n";
+
                 }
             }
             if (preferences.getBoolean("isGatePass", false)) {
                 gatePassCategory.setVisibility(View.VISIBLE);
-                //summary += "\n Fees for Gate Pass per Vehicle\n\n";
+
                 if (!preferences.getString("gcar", "").isEmpty()) {
                     llGatePassCar.setVisibility(View.VISIBLE);
-                    // summary += "Car: "+ preferences.getString("gcar", null) +"\n";
+
                 }
                 if (!preferences.getString("gkeke", "").isEmpty()) {
                     llGatePassKeke.setVisibility(View.VISIBLE);
 
-                    //summary += "Keke Napep: "+ preferences.getString("gkeke", null) +"\n";
+
                 }
                 if (!preferences.getString("gbus", "").isEmpty()) {
                     llGatePassBus.setVisibility(View.VISIBLE);
-                    //summary += "Bus: "+ preferences.getString("gbus", null) +"\n";
+
                 }
                 if (!preferences.getString("ghilux", "").isEmpty()) {
                     llGatePassHilux.setVisibility(View.VISIBLE);
-                    //summary += "Hilux: "+ preferences.getString("ghilux", null) +"\n";
+
                 }
                 if (!preferences.getString("gsienna", "").isEmpty()) {
                     llGatePassSienna.setVisibility(View.VISIBLE);
-                    //summary += "Sienna: "+ preferences.getString("gsienna", null) +"\n";
+
                 }
                 if (!preferences.getString("gjeep", "").isEmpty()) {
                     llGatePassJeep.setVisibility(View.VISIBLE);
-                    //summary += "Jeep: "+ preferences.getString("gjeep", null) +"\n";
+
                 }
                 if (!preferences.getString("gtrailer", "").isEmpty()) {
                     llGatePassTrailer.setVisibility(View.VISIBLE);
-                    //summary += "Trailer: "+ preferences.getString("gtrailer", null) +"\n";
+
                 }
                 if (!preferences.getString("gcanter", "").isEmpty()) {
                     llGatePassCanter.setVisibility(View.VISIBLE);
-                    //summary += "Canter: "+ preferences.getString("gcanter", null) +"\n";
+
                 }
                 if (!preferences.getString("gtangul", "").isEmpty()) {
                     llGatePassTangul.setVisibility(View.VISIBLE);
-                    //summary += "Tangul: "+ preferences.getString("gtangul", null) +"\n";
+
                 }
                 if (!preferences.getString("gj5", "").isEmpty()) {
                     llGatePassJ5.setVisibility(View.VISIBLE);
-                    //summary += "J5: "+ preferences.getString("gj5", null) +"\n";
+
                 }
                 if (!preferences.getString("gwheelbarrow", "").isEmpty()) {
                     llGatePassWheelbarrow.setVisibility(View.VISIBLE);
-                    //summary += "Wheelbarrow: "+ preferences.getString("gwheelbarrow", null) +"\n";
+
                 }
 
             }
             if (preferences.getBoolean("isLoading", false)) {
                 loadingCategory.setVisibility(View.VISIBLE);
-                ///summary += "\n Fees for Loading/Offloading per Vehicle\n\n";
+
                 if (!preferences.getString("lcar", "").isEmpty()) {
                     llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Car: "+ preferences.getString("lcar", null) +"\n";
+
                 }
                 if (!preferences.getString("lkeke", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Keke Napep: "+ preferences.getString("lkeke", null) +"\n";
+                    llLoadingKeke.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lbus", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Bus: "+ preferences.getString("lbus", null) +"\n";
+                    llLoadingBus.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lhilux", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Hilux: "+ preferences.getString("lhilux", null) +"\n";
+                    llLoadingHilux.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lsienna", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Sienna: "+ preferences.getString("lsienna", null) +"\n";
+                    llLoadingSienna.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("ljeep", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Jeep: "+ preferences.getString("ljeep", null) +"\n";
+                    llLoadingJeep.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("ltrailer", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Trailer: "+ preferences.getString("ltrailer", null) +"\n";
+                    llLoadingTrailer.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lcanter", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Canter: "+ preferences.getString("lcanter", null) +"\n";
+                    llLoadingCanter.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("ltangul", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Tangul: "+ preferences.getString("ltangul", null) +"\n";
+                    llLoadingTangul.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lj5", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "J5: "+ preferences.getString("lj5", null) +"\n";
+                    llLoadingJ5.setVisibility(View.VISIBLE);
+
                 }
                 if (!preferences.getString("lwheelbarrow", "").isEmpty()) {
-                    llLoadingCar.setVisibility(View.VISIBLE);
-                    //summary += "Wheelbarrow: "+ preferences.getString("lwheelbarrow", null) +"\n";
+                    llLoadingWheelbarrow.setVisibility(View.VISIBLE);
+
                 }
 
             }
@@ -617,8 +639,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     mIPosPrinterService.printBitmap(1, 10, mBitmap, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                    //mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header1)+"\n", "ST", 32, 1, callback);
-                    //mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header2)+"\n", "ST", 24, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header1)+"\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header2)+"\n", "ST", 24, 1, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
                     mIPosPrinterService.PrintSpecFormatText(deviceName+"\n", "ST", 32, 1, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
@@ -668,7 +690,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     printerInit();
                     printTicket(deviceName, category, item, fee, quantity, now);
-                    //runMutation(vehicle, timeStamp, feeInt, device, receiptType);
+                    runMutation(deviceName, category, item, fee*quantity, now );
 
 
                 }
@@ -811,7 +833,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btPrintGatePassCar:
-                fee = Integer.valueOf(preferences.getString("gkeke", ""));
+                fee = Integer.valueOf(preferences.getString("gcar", ""));
                 item = "Car";
                 category = getApplicationContext().getString(R.string.gatePassCategory);
                 deviceName = getDeviceName();
@@ -996,5 +1018,79 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+
+    //AWS runMutation runMutation(deviceName, category, item, (fee*quantity, now );
+    public void runMutation(String deviceName, String category, String item,  int amount, String timeStamp){
+
+        CreateTestTicketTableInput createTestTicketTableInput = CreateTestTicketTableInput.builder()
+                .id(UUID.randomUUID().toString())
+                .receiptType(category)
+                .itemType(item)
+                .fee(amount)
+                .deviceName(deviceName)
+                .date(timeStamp)
+                .build();
+
+        mAWSAppSyncClient.mutate(CreateTestTicketTableMutation.builder().input(createTestTicketTableInput).build()).enqueue(mutationCallback);
+        optimisticWrite(createTestTicketTableInput);
+    }
+
+    private GraphQLCall.Callback<CreateTestTicketTableMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateTestTicketTableMutation.Data>() {
+        @Override
+        public void onResponse(@Nonnull Response<CreateTestTicketTableMutation.Data> response) {
+            //Toast.makeText(getApplicationContext(), "Data uploaded", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onFailure(@Nonnull ApolloException e) {
+            //Toast.makeText(getApplicationContext(), "Data upload Failed", Toast.LENGTH_LONG).show();
+        }
+    };
+
+    private void optimisticWrite(CreateTestTicketTableInput createTestTicketTableInput){
+        final CreateTestTicketTableMutation.CreateTestTicketTable expected =
+                new CreateTestTicketTableMutation.CreateTestTicketTable(
+                        "",                          //GraphQL Type name
+                        createTestTicketTableInput.id(),
+                        createTestTicketTableInput.deviceName(),
+                        createTestTicketTableInput.receiptType(),
+                        createTestTicketTableInput.itemType(),
+                        createTestTicketTableInput.fee(),
+                        createTestTicketTableInput.date()
+                );
+
+        //final AWSAppSyncClient client = ClientFactory.appSyncClient();
+        final ListTestTicketTablesQuery listTestTicketTablesQuery = ListTestTicketTablesQuery.builder().build();
+
+        mAWSAppSyncClient.query(listTestTicketTablesQuery).responseFetcher(AppSyncResponseFetchers.CACHE_ONLY)
+                .enqueue(new GraphQLCall.Callback<ListTestTicketTablesQuery.Data>() {
+                    @Override
+                    public void onResponse(@Nonnull Response<ListTestTicketTablesQuery.Data> response) {
+                        //Populate a copy of the query in the cache
+                        List<ListTestTicketTablesQuery.Item> items = new ArrayList<>();
+                        if(response.data() != null){
+                            items.addAll(response.data().listTestTicketTables().items());
+                        }
+
+                        //Add the newly created item to the cache copy
+                        items.add(new ListTestTicketTablesQuery.Item(expected.__typename(),
+                                expected.id(), expected.deviceName(), expected.receiptType(),  expected.itemType(), expected.fee(),  expected.date()));
+
+                        //Overwrite the cache with the new results
+                        ListTestTicketTablesQuery.Data data = new ListTestTicketTablesQuery.Data(new ListTestTicketTablesQuery.ListTestTicketTables(
+                                "", items, null
+                        ));
+
+                        mAWSAppSyncClient.getStore().write(listTestTicketTablesQuery, data).enqueue(null);
+                        Log.i(TAG, "Successfully added item to local store");
+                    }
+
+                    @Override
+                    public void onFailure(@Nonnull ApolloException e) {
+                        Log.e(TAG, "Failed to add item ", e);
+                    }
+                });
     }
 }
