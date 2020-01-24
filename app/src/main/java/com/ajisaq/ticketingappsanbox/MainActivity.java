@@ -725,6 +725,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         printTicketDialog.setCancelable(false);
         printTicketDialog.setTitle("Print Ticket");
         printTicketDialog.setMessage("Choose In/Out to Print Ticket for "+item );
+        printTicketDialog.setCancelable(true);
         printTicketDialog.setPositiveButton("In", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
@@ -762,6 +763,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             printTicketDialog.setCancelable(false);
             printTicketDialog.setTitle("Print Ticket");
             printTicketDialog.setMessage("Are you sure you want to Print Ticket for "+item );
+            printTicketDialog.setCancelable(true);
             printTicketDialog.setPositiveButton("Yes Print", new DialogInterface.OnClickListener() {
 
                 @Override
