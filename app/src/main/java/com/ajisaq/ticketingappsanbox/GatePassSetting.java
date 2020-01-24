@@ -227,6 +227,10 @@ public class GatePassSetting extends AppCompatActivity implements View.OnClickLi
                             editor.putBoolean("produce", false);
                             editor.apply();
                             startActivity(new Intent(getApplicationContext(), ProduceSetting.class));
+                        }else if(preferences.getBoolean("facility", false)){
+                            editor.putBoolean("facility", false);
+                            editor.apply();
+                            startActivity(new Intent(getApplicationContext(), FacilitySetting.class));
                         }else{
                             startActivity(new Intent(getApplicationContext(), Summary.class));
 

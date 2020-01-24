@@ -16,6 +16,7 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
     CheckBox cbCamel, cbCow, cbGoat, cbSheep;
     Button btAnimalsNext;
     EditText etCamel, etCow, etGoat, etSheep;
+    EditText etCamel2, etCow2, etGoat2, etSheep2;
     private final String LOCALSTORAGE = "com.ajisaq.storage";
     SharedPreferences preferences;
     @Override
@@ -32,6 +33,11 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
         etCow = findViewById(R.id.cowValue);
         etGoat = findViewById(R.id.goatValue);
         etSheep = findViewById(R.id.sheepValue);
+
+        etCamel2 = findViewById(R.id.camelValueOut);
+        etCow2 = findViewById(R.id.cowValueOut);
+        etGoat2 = findViewById(R.id.goatValueOut);
+        etSheep2 = findViewById(R.id.sheepValueOut);
 
         btAnimalsNext = findViewById(R.id.btanimalsNext);
 
@@ -56,6 +62,9 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
                         if (!etCamel.getText().toString().isEmpty()) {
                             //store in local storage
                             editor.putString("camel", etCamel.getText().toString());
+                            if(!etCamel2.getText().toString().isEmpty()){
+                                editor.putString("camel2", etCamel2.getText().toString());
+                            }
                             editor.apply();
                             proceed = true;
                         }else {
@@ -68,6 +77,9 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
                         if (!etCow.getText().toString().isEmpty()) {
                             //store in local storage
                             editor.putString("cow", etCow.getText().toString());
+                            if(!etCow2.getText().toString().isEmpty()){
+                                editor.putString("cow2", etCow2.getText().toString());
+                            }
                             editor.apply();
                             proceed = true;
                         }else {
@@ -80,6 +92,9 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
                         if (!etGoat.getText().toString().isEmpty()) {
                             //store in local storage
                             editor.putString("goat", etGoat.getText().toString());
+                            if(!etGoat2.getText().toString().isEmpty()){
+                                editor.putString("goat2", etGoat2.getText().toString());
+                            }
                             editor.apply();
                             proceed = true;
                         }else {
@@ -92,6 +107,9 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
                         if (!etSheep.getText().toString().isEmpty()) {
                             //store in local storage
                             editor.putString("sheep", etSheep.getText().toString());
+                            if(!etSheep2.getText().toString().isEmpty()){
+                                editor.putString("sheep2", etSheep2.getText().toString());
+                            }
                             editor.apply();
                             proceed = true;
                         }else {
@@ -114,6 +132,10 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
                             editor.putBoolean("produce", false);
                             editor.apply();
                             startActivity(new Intent(getApplicationContext(), ProduceSetting.class));
+                        }else if(preferences.getBoolean("facility", false)){
+                            editor.putBoolean("facility", false);
+                            editor.apply();
+                            startActivity(new Intent(getApplicationContext(), FacilitySetting.class));
                         }else{
                             startActivity(new Intent(getApplicationContext(), Summary.class));
 
@@ -129,33 +151,41 @@ public class AnimalsSetting extends AppCompatActivity implements View.OnClickLis
             case R.id.camel:
                 if(cbCamel.isChecked()){
                     etCamel.setVisibility(View.VISIBLE);
+                    etCamel2.setVisibility(View.VISIBLE);
                     btAnimalsNext.setEnabled(true);
                 }else{
                     etCamel.setVisibility(View.INVISIBLE);
+                    etCamel2.setVisibility(View.INVISIBLE);
                 }
                 break;
             case R.id.cow:
                 if(cbCow.isChecked()){
                     etCow.setVisibility(View.VISIBLE);
+                    etCow2.setVisibility(View.VISIBLE);
                     btAnimalsNext.setEnabled(true);
                 }else{
                     etCow.setVisibility(View.INVISIBLE);
+                    etCow2.setVisibility(View.INVISIBLE);
                 }
                 break;
             case R.id.goat:
                 if(cbGoat.isChecked()){
                     etGoat.setVisibility(View.VISIBLE);
+                    etGoat2.setVisibility(View.VISIBLE);
                     btAnimalsNext.setEnabled(true);
                 }else{
                     etGoat.setVisibility(View.INVISIBLE);
+                    etGoat2.setVisibility(View.INVISIBLE);
                 }
                 break;
             case R.id.sheep:
                 if(cbSheep.isChecked()){
                     etSheep.setVisibility(View.VISIBLE);
+                    etSheep2.setVisibility(View.VISIBLE);
                     btAnimalsNext.setEnabled(true);
                 }else{
                     etSheep.setVisibility(View.INVISIBLE);
+                    etSheep2.setVisibility(View.INVISIBLE);
                 }
                 break;
 

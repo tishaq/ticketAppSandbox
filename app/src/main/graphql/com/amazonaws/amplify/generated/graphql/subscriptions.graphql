@@ -1,18 +1,6 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTestTicketTable(
-  $id: ID
-  $deviceName: String
-  $receiptType: String
-  $itemType: String
-  $fee: Int
-) {
-  onCreateTestTicketTable(
-    id: $id
-    deviceName: $deviceName
-    receiptType: $receiptType
-    itemType: $itemType
-    fee: $fee
-  ) {
+subscription OnCreateFuforeTickets {
+  onCreateFuforeTickets {
     id
     deviceName
     receiptType
@@ -21,20 +9,8 @@ subscription OnCreateTestTicketTable(
     date
   }
 }
-subscription OnUpdateTestTicketTable(
-  $id: ID
-  $deviceName: String
-  $receiptType: String
-  $itemType: String
-  $fee: Int
-) {
-  onUpdateTestTicketTable(
-    id: $id
-    deviceName: $deviceName
-    receiptType: $receiptType
-    itemType: $itemType
-    fee: $fee
-  ) {
+subscription OnUpdateFuforeTickets {
+  onUpdateFuforeTickets {
     id
     deviceName
     receiptType
@@ -43,20 +19,8 @@ subscription OnUpdateTestTicketTable(
     date
   }
 }
-subscription OnDeleteTestTicketTable(
-  $id: ID
-  $deviceName: String
-  $receiptType: String
-  $itemType: String
-  $fee: Int
-) {
-  onDeleteTestTicketTable(
-    id: $id
-    deviceName: $deviceName
-    receiptType: $receiptType
-    itemType: $itemType
-    fee: $fee
-  ) {
+subscription OnDeleteFuforeTickets {
+  onDeleteFuforeTickets {
     id
     deviceName
     receiptType

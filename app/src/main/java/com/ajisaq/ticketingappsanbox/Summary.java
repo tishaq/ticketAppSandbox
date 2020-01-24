@@ -137,6 +137,19 @@ public class Summary extends AppCompatActivity {
             }
 
         }
+        if(preferences.getBoolean("isFacility", false)){
+            summary += "\n Fees for Facility per Bag\n\n";
+            if(!preferences.getString("shop", "").isEmpty()){
+                summary += "Shop: "+ preferences.getString("shop", null) +"\n";
+            }
+            if(!preferences.getString("store", "").isEmpty()){
+                summary += "Store: "+ preferences.getString("store", null) +"\n";
+            }
+            if(!preferences.getString("rumfa", "").isEmpty()){
+                summary += "Rumfa: "+ preferences.getString("rumfa", null) +"\n";
+            }
+
+        }
         tvSummary.setText(summary);
         btAccept.setOnClickListener(new View.OnClickListener() {
             @Override

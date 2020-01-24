@@ -33,7 +33,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@mipmap/logo"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -72,20 +72,24 @@
                         layout="@layout/category_animals"
                         android:visibility="gone"
                         />
-                        <include
-                            layout="@layout/category_produce"
-                            android:visibility="gone"
-                            />
-                        <include
-                            layout="@layout/category_gate_pass"
-                            android:visibility="gone"
-                            />
-                        <include
-                            layout="@layout/category_loading"
-                            android:visibility="gone"
-                            />
+                    <include
+                        layout="@layout/category_produce"
+                        android:visibility="gone"
+                        />
+                    <include
+                        layout="@layout/category_facility"
+                        android:visibility="gone"
+                        />
+                    <include
+                        layout="@layout/category_gate_pass"
+                        android:visibility="gone"
+                        />
+                    <include
+                        layout="@layout/category_loading"
+                        android:visibility="gone"
+                        />
                 </LinearLayout>
-
+<!--
                 <Button
                     android:id="@+id/btTransactionSummary"
                     android:layout_width="match_parent"
@@ -97,6 +101,7 @@
                     android:paddingTop="20dp"
                     android:paddingBottom="20dp"
                     />
+                -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

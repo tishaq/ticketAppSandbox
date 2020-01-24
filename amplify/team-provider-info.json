@@ -1,15 +1,15 @@
 {
-    "test": {
+    "fufore": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-ticketingappsanbox-test-60929-authRole",
-            "UnauthRoleArn": "arn:aws:iam::367770468775:role/amplify-ticketingappsanbox-test-60929-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::367770468775:role/amplify-ticketingappsanbox-test-60929-authRole",
+            "AuthRoleName": "amplify-fuforeticketapp-fufore-174742-authRole",
+            "UnauthRoleArn": "arn:aws:iam::367770468775:role/amplify-fuforeticketapp-fufore-174742-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::367770468775:role/amplify-fuforeticketapp-fufore-174742-authRole",
             "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-ticketingappsanbox-test-60929-deployment",
-            "UnauthRoleName": "amplify-ticketingappsanbox-test-60929-unauthRole",
-            "StackName": "amplify-ticketingappsanbox-test-60929",
-            "StackId": "arn:aws:cloudformation:us-east-2:367770468775:stack/amplify-ticketingappsanbox-test-60929/9af3fdb0-3d9e-11ea-8aa0-0a9fc5c4303c",
-            "AmplifyAppId": "d2q15lan1ve24m"
+            "DeploymentBucketName": "amplify-fuforeticketapp-fufore-174742-deployment",
+            "UnauthRoleName": "amplify-fuforeticketapp-fufore-174742-unauthRole",
+            "StackName": "amplify-fuforeticketapp-fufore-174742",
+            "StackId": "arn:aws:cloudformation:us-east-2:367770468775:stack/amplify-fuforeticketapp-fufore-174742/7318b7b0-3adb-11ea-8978-02402ec64522",
+            "AmplifyAppId": "dq7tdiuqetjvd"
         }
     }
 }

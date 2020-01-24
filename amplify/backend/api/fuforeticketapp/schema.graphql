@@ -1,0 +1,8 @@
+type FuforeTickets @model {
+  id: ID!
+  deviceName: String!
+  receiptType: String!
+  itemType: String!
+  fee: Int!
+  date: String!
+}

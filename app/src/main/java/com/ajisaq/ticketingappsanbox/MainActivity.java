@@ -31,8 +31,9 @@ import android.widget.Toast;
 import com.ajisaq.ticketingappsanbox.Utils.ButtonDelayUtils;
 import com.ajisaq.ticketingappsanbox.Utils.HandlerUtils;
 
-import com.amazonaws.amplify.generated.graphql.CreateTestTicketTableMutation;
-import com.amazonaws.amplify.generated.graphql.ListTestTicketTablesQuery;
+import com.amazonaws.amplify.generated.graphql.CreateFuforeTicketsMutation;
+import com.amazonaws.amplify.generated.graphql.GetFuforeTicketsQuery;
+import com.amazonaws.amplify.generated.graphql.ListFuforeTicketssQuery;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
@@ -52,7 +53,8 @@ import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
-import type.CreateTestTicketTableInput;
+import type.CreateFuforeTicketsInput;
+
 
 import static com.ajisaq.ticketingappsanbox.MemInfo.bitmapRecycle;
 
@@ -227,22 +229,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText etMaizeNo, etBeansNo, etRiceNo, etMilletNo, etGroundnutNo;
     Button btPrintCamel, btPrintCow,btPrintSheep, btPrintGoat;
     Button btPrintMaize, btPrintBeans, btPrintRice, btPrintMillet, btPrintGroundnut;
+    Button btPrintFacilityShop, btPrintFacilityStore,btPrintFacilityRumfa;
     Button btPrintGatePassCar, btPrintGatePassKeke, btPrintGatePassBus, btPrintGatePassHilux,
             btPrintGatePassJeep, btPrintGatePassTrailer, btPrintGatePassCanter, btPrintGatePassTangul,
             btPrintGatePassSienna, btPrintGatePassJ5, btPrintGatePassWheelbarrow;
     Button btPrintLoadingCar, btPrintLoadingKeke, btPrintLoadingBus, btPrintLoadingHilux,
             btPrintLoadingJeep, btPrintLoadingTrailer, btPrintLoadingCanter, btPrintLoadingTangul,
             btPrintLoadingSienna, btPrintLoadingJ5, btPrintLoadingWheelbarrow;
-    Button btTransactionSummary;
+    //Button btTransactionSummary;
     LinearLayout llAnimalCamel, llAnimalCow, llAnimalSheep, llAnimalGoat;
     LinearLayout llProduceMaize, llProduceBeans, llProduceRice, llProduceMillet, llProduceGroundnut;
+    LinearLayout llFacilityShop, llFacilityStore, llFacilityRumfa;
     LinearLayout llGatePassCar, llGatePassKeke, llGatePassBus, llGatePassHilux,
             llGatePassJeep, llGatePassTrailer, llGatePassCanter, llGatePassTangul,
             llGatePassSienna, llGatePassJ5, llGatePassWheelbarrow;
     LinearLayout llLoadingCar, llLoadingKeke, llLoadingBus, llLoadingHilux,
             llLoadingJeep, llLoadingTrailer, llLoadingCanter, llLoadingTangul,
             llLoadingSienna, llLoadingJ5, llLoadingWheelbarrow;
-    LinearLayout animalsCategory, produceCategory, gatePassCategory, loadingCategory;
+    LinearLayout animalsCategory, produceCategory, gatePassCategory, loadingCategory, facilityCategory;
 
    private AWSAppSyncClient mAWSAppSyncClient;
 
@@ -321,11 +325,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btPrintSheep = findViewById(R.id.btPrintSheep);
         btPrintGoat = findViewById(R.id.btPrintGoat);
 
+
+
         btPrintMaize = findViewById(R.id.btPrintMaize);
         btPrintBeans = findViewById(R.id.btPrintBeans);
         btPrintRice = findViewById(R.id.btPrintRice);
         btPrintMillet = findViewById(R.id.btPrintMillet);
         btPrintGroundnut  = findViewById(R.id.btPrintGroundnut);
+
+        btPrintFacilityShop = findViewById(R.id.btPrintFacilityShop);
+        btPrintFacilityStore = findViewById(R.id.btPrintFacilityStore);
+        btPrintFacilityRumfa = findViewById(R.id.btPrintFacilityRumfa);
 
         btPrintGatePassCar = findViewById(R.id.btPrintGatePassCar);
         btPrintGatePassKeke  = findViewById(R.id.btPrintGatePassKeke);
@@ -351,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btPrintLoadingJ5 = findViewById(R.id.btPrintLoadingJ5);
         btPrintLoadingWheelbarrow = findViewById(R.id.btPrintLoadingWheelbarrow);
 
-        btTransactionSummary = findViewById(R.id.btTransactionSummary);
+        //btTransactionSummary = findViewById(R.id.btTransactionSummary);
 
         llAnimalCamel = findViewById(R.id.llAnimalCamel);
         llAnimalCow = findViewById(R.id.llAnimalCow);
@@ -363,6 +373,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         llProduceRice = findViewById(R.id.llProduceRice);
         llProduceMillet = findViewById(R.id.llProduceMillet);
         llProduceGroundnut = findViewById(R.id.llProduceGroundnut);
+
+        llFacilityShop = findViewById(R.id.llFacilityShop);
+        llFacilityStore = findViewById(R.id.llFacilityStore);
+        llFacilityRumfa = findViewById(R.id.llFacilityRumfa);
 
         llGatePassCar = findViewById(R.id.llGatePassCar);
         llGatePassKeke  = findViewById(R.id.llGatePassKeke);
@@ -392,6 +406,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         produceCategory = findViewById(R.id.produceCategory);
         gatePassCategory = findViewById(R.id.gatePassCategory);
         loadingCategory = findViewById(R.id.loadingCategory);
+        facilityCategory = findViewById(R.id.facilityCategory);
 
 
 
@@ -407,6 +422,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btPrintRice.setOnClickListener(this);
         btPrintMillet.setOnClickListener(this);
         btPrintGroundnut.setOnClickListener(this);
+
+        btPrintFacilityShop.setOnClickListener(this);
+        btPrintFacilityStore.setOnClickListener(this);
+        btPrintFacilityRumfa.setOnClickListener(this);
 
         btPrintGatePassCar.setOnClickListener(this);
         btPrintGatePassKeke.setOnClickListener(this);
@@ -432,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btPrintLoadingJ5.setOnClickListener(this);
         btPrintLoadingWheelbarrow.setOnClickListener(this);
 
-        btTransactionSummary.setOnClickListener(this);
+       // btTransactionSummary.setOnClickListener(this);
 
         animalsCategory.setOnClickListener(this);
         produceCategory.setOnClickListener(this);
@@ -486,6 +505,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
             }
+            if (preferences.getBoolean("isFacility", false)) {
+                facilityCategory.setVisibility(View.VISIBLE);
+
+                if (!preferences.getString("shop", "").isEmpty()) {
+                    llFacilityShop.setVisibility(View.VISIBLE);
+
+                }
+                if (!preferences.getString("store", "").isEmpty()) {
+                    llFacilityStore.setVisibility(View.VISIBLE);
+
+                }
+                if (!preferences.getString("rumfa", "").isEmpty()) {
+                    llFacilityRumfa.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+
             if (preferences.getBoolean("isGatePass", false)) {
                 gatePassCategory.setVisibility(View.VISIBLE);
 
@@ -634,25 +671,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ThreadPoolManager.getInstance().executeTask(new Runnable() {
             @Override
             public void run() {
-                Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+                Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.logo);
 
                 try {
-                    mIPosPrinterService.printBitmap(1, 10, mBitmap, callback);
+                    mIPosPrinterService.printBitmap(1, 8, mBitmap, callback);
+                    mIPosPrinterService.printBlankLines(1, 8, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
                     mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header1)+"\n", "ST", 32, 1, callback);
-                    mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header2)+"\n", "ST", 24, 1, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                    mIPosPrinterService.PrintSpecFormatText(deviceName+"\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText(getApplicationContext().getString(R.string.header2)+"\n", "ST", 32, 1, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                    mIPosPrinterService.PrintSpecFormatText(category+"\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText("Device: "+deviceName+"\n", "ST", 24, 0, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                    mIPosPrinterService.PrintSpecFormatText(item+"\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText("Ticket Type: "+category+"\n", "ST", 24, 0, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                    mIPosPrinterService.PrintSpecFormatText("Paid N"+String.valueOf(fee*quantity)+" Only\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText("Item: "+item+"\n", "ST", 24, 0, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
-                   mIPosPrinterService.PrintSpecFormatText(timeStamp+"\n", "ST", 32, 1, callback);
+                    mIPosPrinterService.PrintSpecFormatText("Quantity: "+quantity+"\n", "ST", 24, 0, callback);
+                    mIPosPrinterService.printBlankLines(1, 8, callback);
+                    mIPosPrinterService.PrintSpecFormatText("Amount N"+String.valueOf(fee*quantity)+"\n", "ST", 24, 0, callback);
+                    mIPosPrinterService.printBlankLines(1, 8, callback);
+                   mIPosPrinterService.PrintSpecFormatText("Date & Time: "+timeStamp+"\n", "ST", 24, 0, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
                     mIPosPrinterService.PrintSpecFormatText("***Powered by ajisaq.com***\n", "ST", 24, 1, callback);
+                    mIPosPrinterService.printBlankLines(1, 8, callback);
                     mIPosPrinterService.printBlankLines(1, 8, callback);
                     bitmapRecycle(mBitmap);
                     mIPosPrinterService.printerPerformPrint(80,  callback);
@@ -675,6 +717,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return  printerStatus;
     }
 
+
+    private void printAndSaveInOut(final String deviceName, final String category,
+                                  final String item, final int fee, final int quantity){
+
+        AlertDialog.Builder printTicketDialog = new AlertDialog.Builder(MainActivity.this);
+        printTicketDialog.setCancelable(false);
+        printTicketDialog.setTitle("Print Ticket");
+        printTicketDialog.setMessage("Choose In/Out to Print Ticket for "+item );
+        printTicketDialog.setPositiveButton("In", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            if(!preferences.getString(item.toLowerCase(), "").isEmpty()){
+                int newFee = Integer.valueOf(preferences.getString(item.toLowerCase(), ""));
+                String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+
+                printerInit();
+                printTicket(deviceName, category, item, newFee, quantity, now);
+                runMutation(deviceName, category, item, newFee * quantity, now);
+            }
+
+
+            }
+        }).setNegativeButton("Out ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(!preferences.getString(item.toLowerCase()+"2", "").isEmpty()){
+                            int newFee = Integer.valueOf(preferences.getString(item.toLowerCase()+"2", ""));
+                            String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+
+                            printerInit();
+                            printTicket(deviceName, category, item, newFee, quantity, now);
+                            runMutation(deviceName, category, item, newFee * quantity, now);
+                        }
+
+                    }
+        }).show();
+    }
+
     private void printAndSave(final String deviceName, final String category,
                               final String item, final int fee, final int quantity){
         if(getPrinterStatus() == PRINTER_NORMAL){
@@ -683,14 +763,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             printTicketDialog.setTitle("Print Ticket");
             printTicketDialog.setMessage("Are you sure you want to Print Ticket for "+item );
             printTicketDialog.setPositiveButton("Yes Print", new DialogInterface.OnClickListener() {
+
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
 
                     String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
-                    printerInit();
-                    printTicket(deviceName, category, item, fee, quantity, now);
-                    runMutation(deviceName, category, item, fee*quantity, now );
+                        printerInit();
+                        printTicket(deviceName, category, item, fee, quantity, now);
+                        runMutation(deviceName, category, item, fee * quantity, now);
 
 
                 }
@@ -717,12 +798,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btPrintCamel:
                 if(!etCamelNo.getText().toString().isEmpty()
                         && Integer.valueOf(etCamelNo.getText().toString()) > 0) {
+
                     deviceName = getDeviceName();
                     category = getApplicationContext().getString(R.string.animalsCategory);
                     item = "Camel";
                     fee = Integer.valueOf(preferences.getString("camel", ""));
                     quantity = Integer.valueOf(etCamelNo.getText().toString());
-                    printAndSave(deviceName,category,item,fee, quantity);
+                    printAndSaveInOut(deviceName,category,item,fee, quantity);
+                    etCamelNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -735,7 +818,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     item = "Cow";
                     fee = Integer.valueOf(preferences.getString("cow", ""));
                     quantity = Integer.valueOf(etCowNo.getText().toString());
-                    printAndSave(deviceName,category,item,fee, quantity);
+                    printAndSaveInOut(deviceName,category,item,fee, quantity);
+                    etCowNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -748,7 +832,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     item = "Sheep";
                     fee = Integer.valueOf(preferences.getString("sheep", ""));
                     quantity = Integer.valueOf(etSheepNo.getText().toString());
-                    printAndSave(deviceName,category,item,fee, quantity);
+                    printAndSaveInOut(deviceName,category,item,fee, quantity);
+                    etSheepNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }                break;
@@ -760,7 +845,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     item = "Goat";
                     fee = Integer.valueOf(preferences.getString("goat", ""));
                     quantity = Integer.valueOf(etGoatNo.getText().toString());
-                    printAndSave(deviceName,category,item,fee, quantity);
+                    printAndSaveInOut(deviceName,category,item,fee, quantity);
+                    etGoatNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -775,6 +861,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fee = Integer.valueOf(preferences.getString("maize", ""));
                     quantity = Integer.valueOf(etMaizeNo.getText().toString());
                     printAndSave(deviceName,category,item,fee, quantity);
+                    etMaizeNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -788,6 +875,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fee = Integer.valueOf(preferences.getString("beans", ""));
                     quantity = Integer.valueOf(etBeansNo.getText().toString());
                     printAndSave(deviceName,category,item,fee, quantity);
+                    etBeansNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -801,6 +889,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fee = Integer.valueOf(preferences.getString("rice", ""));
                     quantity = Integer.valueOf(etRiceNo.getText().toString());
                     printAndSave(deviceName,category,item,fee, quantity);
+                    etRiceNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -814,6 +903,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fee = Integer.valueOf(preferences.getString("millet", ""));
                     quantity = Integer.valueOf(etMilletNo.getText().toString());
                     printAndSave(deviceName,category,item,fee, quantity);
+                    etMilletNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -827,6 +917,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fee = Integer.valueOf(preferences.getString("groundnut", ""));
                     quantity = Integer.valueOf(etGroundnutNo.getText().toString());
                     printAndSave(deviceName,category,item,fee, quantity);
+                    etGroundnutNo.setText("");
                 }else{
                     Toast.makeText(this, "Invalid Value", Toast.LENGTH_LONG).show();
                 }
@@ -1010,11 +1101,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 quantity = 1;
                 printAndSave(deviceName,category,item,fee, quantity);
                 break;
-
-
-            case R.id.btTransactionSummary:
-                startActivity(new Intent(getApplicationContext(), TransactionSummary.class));
+            case R.id.btPrintFacilityShop:
+                fee = Integer.valueOf(preferences.getString("shop", ""));
+                item = "Shop";
+                category = getApplicationContext().getString(R.string.facilityCategory);
+                deviceName = getDeviceName();
+                quantity = 1;
+                printAndSave(deviceName,category,item,fee, quantity);
                 break;
+            case R.id.btPrintFacilityStore:
+                fee = Integer.valueOf(preferences.getString("store", ""));
+                item = "Store";
+                category = getApplicationContext().getString(R.string.facilityCategory);
+                deviceName = getDeviceName();
+                quantity = 1;
+                printAndSave(deviceName,category,item,fee, quantity);
+                break;
+            case R.id.btPrintFacilityRumfa:
+                fee = Integer.valueOf(preferences.getString("rumfa", ""));
+                item = "Rumfa";
+                category = getApplicationContext().getString(R.string.facilityCategory);
+                deviceName = getDeviceName();
+                quantity = 1;
+                printAndSave(deviceName,category,item,fee, quantity);
+                break;
+           /*/ case R.id.btTransactionSummary:
+
+                startActivity(new Intent(getApplicationContext(), TransactionSummary.class));
+                break; */
             default:
                 break;
         }
@@ -1024,7 +1138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //AWS runMutation runMutation(deviceName, category, item, (fee*quantity, now );
     public void runMutation(String deviceName, String category, String item,  int amount, String timeStamp){
 
-        CreateTestTicketTableInput createTestTicketTableInput = CreateTestTicketTableInput.builder()
+        CreateFuforeTicketsInput createTestTicketTableInput = CreateFuforeTicketsInput.builder()
                 .id(UUID.randomUUID().toString())
                 .receiptType(category)
                 .itemType(item)
@@ -1033,13 +1147,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .date(timeStamp)
                 .build();
 
-        mAWSAppSyncClient.mutate(CreateTestTicketTableMutation.builder().input(createTestTicketTableInput).build()).enqueue(mutationCallback);
+        mAWSAppSyncClient.mutate(CreateFuforeTicketsMutation.builder().input(createTestTicketTableInput).build()).enqueue(mutationCallback);
         optimisticWrite(createTestTicketTableInput);
     }
 
-    private GraphQLCall.Callback<CreateTestTicketTableMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateTestTicketTableMutation.Data>() {
+    private GraphQLCall.Callback<CreateFuforeTicketsMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateFuforeTicketsMutation.Data>() {
         @Override
-        public void onResponse(@Nonnull Response<CreateTestTicketTableMutation.Data> response) {
+        public void onResponse(@Nonnull Response<CreateFuforeTicketsMutation.Data> response) {
             //Toast.makeText(getApplicationContext(), "Data uploaded", Toast.LENGTH_LONG).show();
         }
 
@@ -1049,9 +1163,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    private void optimisticWrite(CreateTestTicketTableInput createTestTicketTableInput){
-        final CreateTestTicketTableMutation.CreateTestTicketTable expected =
-                new CreateTestTicketTableMutation.CreateTestTicketTable(
+    private void optimisticWrite(CreateFuforeTicketsInput createTestTicketTableInput){
+        final CreateFuforeTicketsMutation.CreateFuforeTickets expected =
+                new CreateFuforeTicketsMutation.CreateFuforeTickets(
                         "",                          //GraphQL Type name
                         createTestTicketTableInput.id(),
                         createTestTicketTableInput.deviceName(),
@@ -1062,28 +1176,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 );
 
         //final AWSAppSyncClient client = ClientFactory.appSyncClient();
-        final ListTestTicketTablesQuery listTestTicketTablesQuery = ListTestTicketTablesQuery.builder().build();
+        final ListFuforeTicketssQuery listFuforeTicketssQuery = ListFuforeTicketssQuery.builder().build();
 
-        mAWSAppSyncClient.query(listTestTicketTablesQuery).responseFetcher(AppSyncResponseFetchers.CACHE_ONLY)
-                .enqueue(new GraphQLCall.Callback<ListTestTicketTablesQuery.Data>() {
+        mAWSAppSyncClient.query(listFuforeTicketssQuery).responseFetcher(AppSyncResponseFetchers.CACHE_ONLY)
+                .enqueue(new GraphQLCall.Callback<ListFuforeTicketssQuery.Data>() {
                     @Override
-                    public void onResponse(@Nonnull Response<ListTestTicketTablesQuery.Data> response) {
+                    public void onResponse(@Nonnull Response<ListFuforeTicketssQuery.Data> response) {
                         //Populate a copy of the query in the cache
-                        List<ListTestTicketTablesQuery.Item> items = new ArrayList<>();
+                        List<ListFuforeTicketssQuery.Item> items = new ArrayList<>();
                         if(response.data() != null){
-                            items.addAll(response.data().listTestTicketTables().items());
+                            items.addAll(response.data().listFuforeTicketss().items());
                         }
 
                         //Add the newly created item to the cache copy
-                        items.add(new ListTestTicketTablesQuery.Item(expected.__typename(),
+                        items.add(new ListFuforeTicketssQuery.Item(expected.__typename(),
                                 expected.id(), expected.deviceName(), expected.receiptType(),  expected.itemType(), expected.fee(),  expected.date()));
 
                         //Overwrite the cache with the new results
-                        ListTestTicketTablesQuery.Data data = new ListTestTicketTablesQuery.Data(new ListTestTicketTablesQuery.ListTestTicketTables(
+                        ListFuforeTicketssQuery.Data data = new ListFuforeTicketssQuery.Data(new ListFuforeTicketssQuery.ListFuforeTicketss(
                                 "", items, null
                         ));
 
-                        mAWSAppSyncClient.getStore().write(listTestTicketTablesQuery, data).enqueue(null);
+                        mAWSAppSyncClient.getStore().write(listFuforeTicketssQuery, data).enqueue(null);
                         Log.i(TAG, "Successfully added item to local store");
                     }
 

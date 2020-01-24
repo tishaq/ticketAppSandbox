@@ -43,6 +43,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Loading/Offloading Pass"/>
+        <CheckBox
+            android:id="@+id/cbFacility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facility Charges"/>
 
         <Button
             android:id="@+id/btcategoryNext"

@@ -117,7 +117,11 @@ public class ProduceSetting extends AppCompatActivity implements View.OnClickLis
                              editor.putBoolean("animals", false);
                              editor.apply();
                             startActivity(new Intent(getApplicationContext(), AnimalsSetting.class));
-                        }else{
+                        }else if(preferences.getBoolean("facility", false)){
+                             editor.putBoolean("facility", false);
+                             editor.apply();
+                             startActivity(new Intent(getApplicationContext(), FacilitySetting.class));
+                         }else{
                              startActivity(new Intent(getApplicationContext(), Summary.class));
 
                          }

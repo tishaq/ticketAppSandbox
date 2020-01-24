@@ -2,7 +2,7 @@
     "providers": [
         "awscloudformation"
     ],
-    "projectName": "TicketingAppSanbox",
+    "projectName": "FuforeTicketApp",
     "version": "3.0",
     "frontend": "android",
     "android": {

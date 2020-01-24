@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TicketingAppSanbox</string>
+    <string name="app_name">Fufore Ticketing</string>
 
     <string name="out_of_paper">The printer is out of paper</string>
     <string name="exists_paper">The printer paper is ready</string>
@@ -9,11 +9,12 @@
     <string name="printer_current_task_print_complete">The print task has been printed</string>
     <string name="title_activity_settings">Settings</string>
 
-    <string name="header1"> (Name) Local Government Area</string>
+    <string name="header1"> Fufore Local Government Area</string>
     <string name="header2"> Adamawa State</string>
 
     <string name="animalsCategory">Animals</string>
     <string name="produceCategory">Produce</string>
     <string name="gatePassCategory">Gate Pass</string>
     <string name="loadingCategory">Loading/Offloading</string>
+    <string name="facilityCategory">Facility Charges</string>
 </resources>

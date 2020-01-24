@@ -22,7 +22,7 @@
             android:orientation="vertical"
             android:background="@color/colorLight"
             android:layout_margin="10dp"
-            android:visibility="gone"
+
             >
 
             <EditText
@@ -33,6 +33,7 @@
                 android:textAlignment="center"
                 android:inputType="number"
                 />
+
             <Button
                 android:id="@+id/btPrintCamel"
                 android:layout_width="match_parent"
@@ -50,7 +51,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/colorLight"
-            android:layout_margin="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
         >
 
         <EditText
@@ -80,7 +82,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/colorLight"
-            android:layout_margin="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
         >
 
         <EditText
@@ -110,7 +113,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/colorLight"
-            android:layout_margin="10dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
         >
 
         <EditText

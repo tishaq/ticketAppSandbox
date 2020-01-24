@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/facilityCategory">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/facilityCategory"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        />
+    <!-- Shop view -->
+    <LinearLayout
+        android:id="@+id/llFacilityShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintFacilityShop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Print for Shop"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Store view -->
+    <LinearLayout
+        android:id="@+id/llFacilityStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintFacilityStore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Print for Store"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+    <!-- Rumfa view -->
+    <LinearLayout
+        android:id="@+id/llFacilityRumfa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorLight"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/btPrintFacilityRumfa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Print for Rumfa"
+            android:textColor="@color/colorText"
+            android:background="@color/colorButton"
+            android:textSize="16sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

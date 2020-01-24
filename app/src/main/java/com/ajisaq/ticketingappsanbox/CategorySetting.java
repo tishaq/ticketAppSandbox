@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class CategorySetting extends AppCompatActivity implements View.OnClickListener{
-    CheckBox cbProduce, cbGatePass, cbAnimals, cbLoading;
+    CheckBox cbProduce, cbGatePass, cbAnimals, cbLoading, cbFacility;
     Button btFinish;
     SharedPreferences preferences;
 
@@ -25,13 +25,15 @@ public class CategorySetting extends AppCompatActivity implements View.OnClickLi
          cbProduce = findViewById(R.id.cbProduce);
          cbGatePass = findViewById(R.id.cbGatePass);
          cbAnimals = findViewById(R.id.cbAnimals);
-         cbLoading = findViewById(R.id.cbLoading);
+        cbLoading = findViewById(R.id.cbLoading);
+        cbFacility = findViewById(R.id.cbFacility);
          btFinish = findViewById(R.id.btcategoryNext);
 
          cbProduce.setOnClickListener(this);
          cbGatePass.setOnClickListener(this);
          cbAnimals.setOnClickListener(this);
-         cbLoading.setOnClickListener(this);
+        cbLoading.setOnClickListener(this);
+        cbFacility.setOnClickListener(this);
          btFinish.setOnClickListener(this);
 
     }
@@ -58,6 +60,10 @@ public class CategorySetting extends AppCompatActivity implements View.OnClickLi
                         editor.putBoolean("produce", false);
                         editor.apply();
                         startActivity(new Intent(getApplicationContext(), ProduceSetting.class));
+                    }else if(preferences.getBoolean("facility", false)){
+                        editor.putBoolean("facility", false);
+                        editor.apply();
+                        startActivity(new Intent(getApplicationContext(), FacilitySetting.class));
                     }
                 }else {
                     Toast.makeText(this, "Check an item", Toast.LENGTH_LONG).show();
@@ -81,6 +87,11 @@ public class CategorySetting extends AppCompatActivity implements View.OnClickLi
             case R.id.cbLoading:
                 btFinish.setEnabled(true);
                 editor.putBoolean("loading", cbLoading.isChecked());
+                editor.apply();
+                break;
+            case R.id.cbFacility:
+                btFinish.setEnabled(true);
+                editor.putBoolean("facility", cbLoading.isChecked());
                 editor.apply();
                 break;
             default:
